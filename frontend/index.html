@@ -74,7 +74,7 @@
                 Herramientas
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" id="http://35.239.252.118/api-flask/coordinates/flush" >Encerar Datos</a>
+                <a class="dropdown-item" id="flushData" >Encerar Datos</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Mostrar datos</a>
               </div>
@@ -106,10 +106,14 @@
           <br>
           <br>
 
-        <p>El valor de salida para una celda que utiliza la distancia inversa ponderada (IDW) se limita al rango de valores utilizados para la interpolación. Dado que la IDW es un promedio de distancia ponderada, el promedio no puede ser mayor que la entrada máxima o inferior que la entrada mínima. Por lo tanto, no puede crear crestas o valles si estos extremos aún no se han muestreado (Watson y Philip 1985).</p>
-        <p>Los mejores resultados de la IDW se obtienen cuando la muestra es lo suficientemente densa respecto de la variación local que intenta simular. Si la muestra de los puntos de entrada es dispersa o despareja, los resultados pueden no representar en forma suficiente la superficie deseada (Watson y Philip 1985).
-
-        </p>
+       
+          <p>La información que se ilustra corresponde a la generación de isomapas geo-referenciados, a partir de datos meteorológico obtenidos de sobrevuelos de un vehículo aéreo no tripulado; las referencias se atribuyen a una fecha, hora y lugar dentro de la caldera del Volcán Pululahua.</p>
+          <p>
+            <i>
+              La vida es una baile en el cráter de un volcán, que en algún y momento hará erupción.
+            </i>
+  
+          </p>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -245,6 +249,14 @@ $("#uploadBtn").click(function(){
        alert("Please select a file.");
     }
 });
+
+$("#flushData").click(function(){
+    $body.addClass("loading"); 
+    $.get("http://35.239.252.118/api-flask/coordinates/flush", function(data, status){
+      $body.removeClass("loading");
+      location.reload();
+    })
+  });
 });
   </script>
 
