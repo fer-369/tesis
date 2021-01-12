@@ -37,7 +37,7 @@ def truncateCoords():
 
     mycursor = mydb.cursor()
 
-    mycursor.execute("TRUNCATE TABLE dron_capture;")
+    mycursor.execute("TRUNCATE TABLE dron_capture")
 
     response = jsonify("sucess")
     response.headers.add("Access-Control-Allow-Origin", "*")
